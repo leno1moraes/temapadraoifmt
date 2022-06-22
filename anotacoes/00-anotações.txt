@@ -1,0 +1,44 @@
+1 - principais arquivos, para o wordpress reconhecer o tema:
+--index.php
+--style.css
+
+2 - criar header e footer
+separar o aquivo "index.php" (com o template do gov.br) em header e footer
+link: https://rockcontent.com/br/blog/criar-tema-wordpress/#:~:text=Para%20criar%20tema%20em%20WordPress,ver%20seu%20tema%20b%C3%A1sico%20pronto!
+
+*3 - criar página function
+a página function.php ==> onde fica as funcções que é usada na página
+link: https://rockcontent.com/br/blog/criar-tema-wordpress/#:~:text=Para%20criar%20tema%20em%20WordPress,ver%20seu%20tema%20b%C3%A1sico%20pronto!
+
+
+4 - automatizar o node do gov
+ver o vídeo neste tempo: https://youtu.be/NqumWZxohRo?t=5012
+a). colocar no arquivo function.php
+b). wp_enqueue_style ==> add estilos css
+	wp_enqueue_script ==> add scripts js (atenção, o último parametro defino se ele fica no 'header' [false] ou no footer[true]
+c). os aquivos 'node_modules' do govbr foram deixados na pasta do assets
+
+
+5 - Functions.php x Menus
+para o wordpress reconhecer seu site possui os menus:
+a). criar no aquivo functions, o seguintes trecho de códigos:
+function nomeDaFuncao_setup(){
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'title-tag' );
+
+    register_nav_menus(
+        array(
+            'primary' => 'Menu Principal'
+        )
+    );
+ }
+ add_action('after_setup_theme', 'nomeDaFuncao_setup');
+
+
+6 - Colocar widgtes
+ver video neste time: https://youtu.be/NqumWZxohRo?t=7159
+
+
+3 - gerenciar links x páginas
+
+

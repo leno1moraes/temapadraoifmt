@@ -1,0 +1,11 @@
+                  /*
+                  
+                    $menu_args = array(
+						            'theme_location'  => 'primary',
+                        'menu_class'      => 'menu-folder',
+                        'depth'           => 0,
+                        'walker'          => new WP_Bootstrap_Navwalker()
+                      );
+                      
+                      wp_nav_menu($menu_args); 
+                  */

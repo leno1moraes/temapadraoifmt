@@ -192,19 +192,15 @@
                   <?php
                   
                     if ( has_nav_menu( 'primary' ) ) {
-                      
-                      //echo 'Olá mundo primary';
 
                       wp_nav_menu(
                         array(
+                                                                           
                           'container'       => '',
-                          'container_class' => 'menu-folder',
-
-                          'item_spacing'    => '',
-
-                          'link_before'     => '<span class="content">',
+                          'container_class' => '',
+                          'items_wrap'      => '<ul class="">%3$s</ul>',
+                          'link_before'     => '<span class="content">',                          
                           'link_after'      => '</span>',
-                          'span_class'      => 'content',
                           'link_class'      => 'menu-item',                          
                           'theme_location'  => 'primary',
                         )

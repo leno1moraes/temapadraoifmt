@@ -36,9 +36,14 @@ add_action('after_setup_theme', 'temapadraoifmt_setup');
 
 
 
+/*remove a class das ul */
+function new_submenu_class($menu) {    
+    $menu = preg_replace('/ class="sub-menu"/',' class=""',$menu);        
+    return $menu;      
+}
+add_filter('wp_nav_menu','new_submenu_class'); 
 
-
-
+/*adiciona class nos <a href=''/>*/
 function add_menu_link_class( $atts, $item, $args ) {
     if (property_exists($args, 'link_class')) {
       $atts['class'] = $args->link_class;
@@ -47,6 +52,7 @@ function add_menu_link_class( $atts, $item, $args ) {
 }
 add_filter( 'nav_menu_link_attributes', 'add_menu_link_class', 1, 3 );
 
+/*adiciona class nos <a href=''/>*/
 function add_menu_list_item_class($classes, $item, $args) {
     if (property_exists($args, 'list_item_class')) {
         $classes[] = $args->list_item_class;
@@ -55,21 +61,30 @@ function add_menu_list_item_class($classes, $item, $args) {
 }
 add_filter('nav_menu_css_class', 'add_menu_list_item_class', 1, 3);
 
-add_filter('nav_menu_item_id', 'clear_nav_menu_item_id', 10, 3);
+/*remove a id das li */
 function clear_nav_menu_item_id($id, $item, $args) {
     return "";
 }
+add_filter('nav_menu_item_id', 'clear_nav_menu_item_id', 10, 3);
 
-add_filter('nav_menu_css_class', 'clear_nav_menu_item_class', 10, 3);
+/*remove a class das li */
 function clear_nav_menu_item_class($classes, $item, $args) {
     return array();
 }
+add_filter('nav_menu_css_class', 'clear_nav_menu_item_class', 10, 3);
 
-/*function remove_ul ( $menu ){
-    return preg_replace( array( '#^<ul[^>]*>#', '#</ul>$#' ), '', $menu );
+
+function replace_li_submenu_class($menu) {    
+
+    //$menu = preg_replace('/<li>/','<li><div></div>',$menu);
+
+    $menu = preg_replace('/<li>/ ','<li> <div class="menu-folder">',$menu);
+
+    $menu = preg_replace('/<\/li>/','</div>',$menu);
+
+    return $menu;      
 }
-add_filter( 'wp_nav_menu', 'remove_ul' );*/
-
+add_filter('wp_nav_menu','replace_li_submenu_class'); 
 
 
 
